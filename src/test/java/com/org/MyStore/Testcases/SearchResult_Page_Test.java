@@ -10,19 +10,21 @@ import org.testng.annotations.Test;
 
 import com.org.MyStore.BaseClass.Base;
 import com.org.MyStore.PageObjects.Index_Page;
+import com.org.MyStore.PageObjects.SearchResult_Page;
 import com.org.MyStore.Utilities.Log;
 
 @Listeners(com.org.MyStore.Listeners.Listeners.class)
-public class Index_Page_Test extends Base {
+public class SearchResult_Page_Test extends Base {
 
 	Index_Page index_page;
+	SearchResult_Page searchresult_page;
 	
 	@BeforeClass
 	public void SetUp() throws IOException {
 		
 		ConfigurationProperties();
 		launchBrowser();
-		Log.startTestCase("Index Page");
+		Log.startTestCase("SearchResult Page");
 		Log.info(" ");
 	}
 	
@@ -30,13 +32,13 @@ public class Index_Page_Test extends Base {
 	public void TearDown() throws InterruptedException {
 		
 		Log.info(" ");
-		Log.endTestCase("Index Page");
-		Thread.sleep(2000);
+		Log.endTestCase("SearchResult Page");
+		Thread.sleep(3000);
 		driver.quit();
 	}
 	
-	@Test
-	public void Verify_Index_Page_Test() {
+	@Test(priority=1)
+	public void Verify_Index_Page() {
 		
 		index_page = new Index_Page();
 		
@@ -49,5 +51,14 @@ public class Index_Page_Test extends Base {
 		
 		index_page.Validate_searchBox();
 		index_page.ClickOn_searchButton();
+	}
+	
+	@Test(priority=2)
+	public void Verify_SearchResult_Page() throws InterruptedException {
+		
+		searchresult_page = new SearchResult_Page();
+		
+		searchresult_page.Validate_Product_Image();
+		searchresult_page.ClickOn_productImg();
 	}
 }

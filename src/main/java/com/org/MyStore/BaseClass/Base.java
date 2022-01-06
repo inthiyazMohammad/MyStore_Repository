@@ -12,6 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import com.org.MyStore.Utilities.Log;
 
@@ -21,12 +22,13 @@ public class Base {
 
 	public static WebDriver driver;
 	public static Properties prop;
+	public static Actions action;
 		
 	public void ConfigurationProperties() throws IOException {
 		
 		DOMConfigurator.configure("log4j.xml");
 		
-		Log.info(">>>>>>Loading properties file");
+		Log.info(">>>>>> Loading properties file");
 		prop = new Properties();
 		FileInputStream file = new FileInputStream(System.getProperty("user.dir")+
 				                               "\\src\\main\\java\\com\\org\\MyStore\\Configuration\\Config.properties");
@@ -36,7 +38,7 @@ public class Base {
 	@SuppressWarnings("deprecation")
 	public void launchBrowser() {
 		
-		Log.info(">>>>>>Loading browser");
+		Log.info(">>>>>> Loading browser");
 		String browser = prop.getProperty("browser");
 		
 		if(browser.equalsIgnoreCase("chrome")) {
@@ -56,7 +58,7 @@ public class Base {
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		Log.info(">>>>>>Loading Application");
+		Log.info(">>>>>> Loading Application");
 		driver.get(prop.getProperty("url"));
 	}
 

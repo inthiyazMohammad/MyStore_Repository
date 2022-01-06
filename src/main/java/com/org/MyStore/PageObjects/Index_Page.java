@@ -27,31 +27,33 @@ public class Index_Page extends Base {
 	
 	public String Validate_Title() {
 		
-		Log.info(">>>>>>Validating Index page title");
+		Log.info(">>>>>> Validating Index page title");
 		return driver.getTitle();
 	}
 	
 	public boolean Valiadate_indexLogo() {
 		
-		Log.info(">>>>>>Validating Index page logo");
+		Log.info(">>>>>> Validating Index page logo");
 		return indexLogo.isDisplayed();
 	}
 	
 	public void Validate_searchBox() {
 		
-		Log.info(">>>>>>Entering product name");
+		Log.info(">>>>>> Entering product name");
 		searchBox.sendKeys(prop.getProperty("product"));
 	}
 	
 	public void ClickOn_searchButton() {
 		
-		Log.info(">>>>>>Clicking on search button");
+		Log.info(">>>>>> Clicking on search button");
 		searchButton.click();
 	}
 	
-	public void ClickOn_signinButton() {
+	public SearchResult_Page ClickOn_signinButton() {
 		
-		Log.info(">>>>>>Clicking on signin button");
+		Log.info(">>>>>> Clicking on signin button");
 		signinButton.click();
+		
+		return new SearchResult_Page();
 	}
 }
